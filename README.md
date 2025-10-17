@@ -15,5 +15,7 @@ Utility scale solar power plants are found all throughout New York state, due to
 | `model ` | Model number for solar balen |
 | `panel_type` | Panel type: M (monocrystalline), P (polycrystalline), T (thin-film) |
 | `power_output` | Solar panel power output in W |
+| `date` | Date of measurement (Excel serial format) |
+| `time` | Time of measurement (24 hour) |
 
 ### Package Dependencies
