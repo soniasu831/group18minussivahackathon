@@ -11,7 +11,7 @@ Each row represents solar panel data collected from utility-scale solar farms.
 | Column | Description |
 | -------- | -------- |
 | `panel_id`  | Unique identifier for solar panel  |
-| `power_output` | Solar panel power output (W) |
+| `power_output` | Solar panel power output (kW) |
 | `date` | Date of measurement (Excel serial format) |
 | `time` | Time of measurement (24 hour format) |
 | `lat` | Lattitude of solar panel farm |
