@@ -5,8 +5,8 @@
 #' 
 #' @description
 #' This function calculates daily peak values for a specified variable (e.g. power output)
-#' across one or more panels, computes the daily mean, and control limits, 
-#' and produces an averages chart using ggplot2.
+#'  across one or more panels, computes the daily mean, and control limits, 
+#'  and produces an averages chart using ggplot2.
 #' 
 #' @param panel_id Character. Solar panel ID corresponding to measurements.
 #' @param variable Numeric. Variable to be analyzed.

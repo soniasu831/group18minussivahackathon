@@ -2,14 +2,14 @@
 #' 
 #' @description
 #' This function evaluates whether a vector passes each of the standard SPC tests.
-#' Each test checks for different types of patterns such as runs below/above control 
-#' limits, trends, or oscillations.
+#'  Each test checks for different types of patterns such as runs below/above control 
+#'  limits, trends, or oscillations.
 #' 
 #' @param averages Numeric. Subgroup average values.
 #' @param sigma Numeric. Standard deviation of the subgroup averages.
 #' 
 #' @return A tibble with colums for each test. Each entry is 'TRUE' if the subgroup
-#' averages pass the test and 'FALSE' if they fail.
+#'  averages pass the test and 'FALSE' if they fail.
 #' 
 #' @details
 #' - Test 1: one point beyond zone a
@@ -45,10 +45,13 @@ spcTest = function(averages, sigma){
     test8 = NA
   )
   
-  #' @name window
-  #' @param data a vector of booleans
-  #' @param len the window size
-  #' @description outputs the number of TRUEs within each window
+  #' @name Window helper function
+  #' @description counts the number of 'TRUE' values within a window of specified size
+  #' @param data a logical vector of booleans
+  #' @param len Interger. the window size
+  #' @return A numeric vector where each element represents the number of 'TRUE' values
+  #'  within each rolling window
+  
   window = function(data, len){
     output = c()
 
