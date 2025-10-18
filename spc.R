@@ -1,7 +1,8 @@
 
 # %%
 
-#' @name Create an average SPC chart for the max power output for each day
+#' @name spc_all
+#' @title Create an average SPC chart for the max power output for each day
 #' 
 #' @description
 #' This function calculates daily peak values for a specified variable (e.g. power output)
@@ -9,9 +10,9 @@
 #'  and produces an averages chart using ggplot2. It also prints a tibble that assesses 
 #'  whether the data passes the eight SPC checks. 
 #' 
-#' @param panel_id Character. Solar panel ID corresponding to measurements.
-#' @param variable Numeric vector. Vector containing variable to be analyzed.
-#' @param date Date or POSIXct. Corresponding to each measurement.
+#' @param panel_data a tibble, as outputted from add_efficiency()
+#' @param site_id character, the unique ID of the solar panel farm of interest
+#' @param var character, variable of interest - "e" for efficiency, "p" for power output
 #' 
 #' @return A ggplot2 of the average SPC chart.
 #' 
@@ -22,25 +23,41 @@
 #' 
 #' @import ggplot2
 #' @import dplyr
-#' @impotFrom lubridate as_date
+#' @importFrom lubridate as_date
 #' @export
 #' 
 #' @examples
 #' \dontrun{
-#' g1 <- spc_all(panel_id, variable, date)
+#' g1 <- spc_all(panel_data, site_id, var)
 #' print(g1)
 #' }
 
-spc_all = function(panel_id, variable, date){
+spc_all = function(panel_data, site_id, var){
 
   library(ggplot2)
   library(dplyr)
 
-  # format data into a tibble
-  data = tibble(
-    date = date,
-    variable = variable,
-    panel_id = panel_id
+  indices = which(panel_data$site_id == site_id)
+
+  date = panel_data$DateTime[indices]
+  panel_id = panel_data$panel_id[indices]
+  power = panel_data$power_output[indices]
+  eff = panel_data$eff[indices]
+
+  if (var == "p"){
+    # format data into a tibble
+    data = tibble(
+      date = date,
+      variable = power,
+      panel_id = panel_id
+      )
+  } else(
+    # format data into a tibble
+    data = tibble(
+      date = date,
+      variable = eff,
+      panel_id = panel_id
+    )
   )
 
   # calculate daily peak for the variable of interest
@@ -55,8 +72,8 @@ spc_all = function(panel_id, variable, date){
   stat_s = daily_peaks %>% 
     # calculate statistics per subgroup
     summarize(
-      sd = sd(variable, na.rm = TRUE),
-      xbar = mean(variable, na.rm = TRUE),
+      sd = sd(peak_value, na.rm = TRUE),
+      xbar = mean(peak_value, na.rm = TRUE),
       nw = n()
     )
 
@@ -106,8 +123,8 @@ spc_all = function(panel_id, variable, date){
     # add titles
     labs(
       subtitle = "Average Chart",
-      y = "Max Power Output",
-      x = "Time"
+      y = ifelse(var == "p","Average Daily Max Power Output (kW)",ifelse(var == "e", "Average Daily Max Efficiency", "Average")),
+      x = "Date"
     ) +
     theme(plot.margin = unit(c(0.25,3,0.25,0.25), "cm")) + # adjust margins
     coord_cartesian(clip = "off") # turn off clipping
@@ -122,23 +139,14 @@ return(g1)
 }
 
 # %%
-library(readr)
-library(tidyverse)
-panel_data = read_csv("louise.csv")
+# library(readr)
+# panel_data = read_csv("louise.csv")
 
+# site_id = panel_data$site_id[1]
+# var = "e"
 
-sites = panel_data$site_id %>% unique()
-indices = sites %>% match(panel_data$site_id)
+# g1 = spc_all(panel_data, site_id, var)
 
-# for testing purposes, look at the first site
-date = panel_data$DateTime[1:(indices[2]-1)]
-variable = panel_data$power_output[1:(indices[2]-1)]
-site_id = panel_data$site_id[1:(indices[2]-1)]
-panel_id = panel_data$panel_id[1:(indices[2]-1)]
-
-
-g1 = spc_all(panel_id, variable, date)
-
-g1
+# g1
 
   

@@ -4,14 +4,14 @@
 \alias{spc_all}
 \title{Create an average SPC chart for the max power output for each day}
 \usage{
-spc_all(panel_id, variable, date)
+spc_all(panel_data, site_id, var)
 }
 \arguments{
-\item{panel_id}{Character. Solar panel ID corresponding to measurements.}
+\item{panel_data}{a tibble, as outputted from add_efficiency()}
 
-\item{variable}{Numeric vector. Vector containing variable to be analyzed.}
+\item{site_id}{character, the unique ID of the solar panel farm of interest}
 
-\item{date}{Date or POSIXct. Corresponding to each measurement.}
+\item{var}{character, variable of interest - "e" for efficiency, "p" for power output}
 }
 \value{
 A ggplot2 of the average SPC chart.
@@ -29,7 +29,7 @@ This function calculates daily peak values for a specified variable (e.g. power 
 }
 \examples{
 \dontrun{
-g1 <- spc_all(panel_id, variable, date)
+g1 <- spc_all(panel_data, site_id, var)
 print(g1)
 }
 }

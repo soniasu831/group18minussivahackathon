@@ -4,12 +4,14 @@
 \alias{spc_moving_range}
 \title{Create moving range SPC chart for a variable of interest}
 \usage{
-spc_moving_range(date, variable)
+spc_moving_range(panel_data, panel_id, variable)
 }
 \arguments{
-\item{date}{Date or POSIXct vector. Date corresponding to each measurement.}
+\item{panel_data}{a tibble, as outputted from add_efficiency()}
 
-\item{variable}{Numeric vector. Vector containing the variable of interest to analyze.}
+\item{panel_id}{character, the unique ID of the solar panel of interest}
+
+\item{var}{character, variable of interest - "e" for efficiency, "p" for power output}
 }
 \value{
 A ggplot2 object of the moving range chart.
@@ -27,7 +29,7 @@ This function calculates the moving range (absolute difference between consecuti
 }
 \examples{
 \dontrun{
-g_mr <- spc_moving_range(date, variable)
+g_mr <- spc_moving_range(panel_data, panel_id, variable)
 print(g_mr)
 }
 }

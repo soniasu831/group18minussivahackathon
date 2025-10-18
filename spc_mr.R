@@ -1,13 +1,15 @@
 # %%
-#' @name Create moving range SPC chart for a variable of interest
+#' @name spc_moving_range
+#' @title Create moving range SPC chart for a variable of interest
 #' 
 #' @description
 #' This function calculates the moving range (absolute difference between consecutive daily
 #'  peak values) for a variable of interest and produces a moving range chart using ggplot2.
 #'  It also prints a tibble that assesses whether the data passes the eight SPC checks. 
 #' 
-#' @param date Date or POSIXct vector. Date corresponding to each measurement.
-#' @param variable Numeric vector. Vector containing the variable of interest to analyze.
+#' @param panel_data a tibble, as outputted from add_efficiency()
+#' @param panel_id character, the unique ID of the solar panel of interest
+#' @param var character, variable of interest - "e" for efficiency, "p" for power output
 #' 
 #' @return A ggplot2 object of the moving range chart.
 #' 
@@ -24,20 +26,35 @@
 #' 
 #' @examples
 #' \dontrun{
-#' g_mr <- spc_moving_range(date, variable)
+#' g_mr <- spc_moving_range(panel_data, panel_id, variable)
 #' print(g_mr)
 #' }
 
-spc_moving_range = function(date, variable){
 
-  library(ggplot2)
-  library(dplyr)
-  library (lubridate)
+spc_moving_range = function(panel_data, panel_id, variable){
 
-  # format data into a tibble
-  data = tibble(
-    date = date,
-    variable = variable,
+  # library(ggplot2)
+  # library(dplyr)
+  # library(lubridate)
+
+  indices = which(panel_data$panel_id == panel_id)
+
+  date = panel_data$DateTime[indices]
+  power = panel_data$power_output[indices]
+  eff = panel_data$eff[indices]
+
+  if (var == "p"){
+    # format data into a tibble
+    data = tibble(
+      date = date,
+      variable = power
+      )
+  } else(
+    # format data into a tibble
+    data = tibble(
+      date = date,
+      variable = eff
+    )
   )
 
   # calculate daily peak for the variable of interest
@@ -101,24 +118,18 @@ spc_moving_range = function(date, variable){
   print(spc_test_results)
 
   return(g1)
-
-
 }
 
 
 # %%
-# %%
-library(readr)
-library(tidyverse)
-library(lubridate)
+# # %%
 
-panel_data = read_csv("louise.csv")
+# library(readr)
 
-# for testing purposes, look at the first solar panel
-date = panel_data$DateTime[1:(30*24)]
-# eff = panel_data$eff[1:(30*24)]
-variable = panel_data$power_output[1:(30*24)]
-# irr = panel_data$irradiance[1:(30*24)]
-g_mr = spc_moving_range(date, variable)
+# panel_data = read_csv("louise.csv")
+# panel_id = panel_data$panel_id[1]
+# var = "p"
 
-g_mr
+# g_mr = spc_moving_range(panel_data, panel_id, var)
+
+# g_mr
