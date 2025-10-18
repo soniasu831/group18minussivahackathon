@@ -29,29 +29,47 @@ ppk = function(mu, sigma_t, lower = NULL, upper = NULL){
 
 # %%
 
-#' Function to calculate Ppks on a per-solar panel level
+#' Function to evaluate Ppks for solar panel efficiency on a per-solar panel level 
 #' @import dplyr
-getPpks = function(panel_data){
+getPpks_panel = function(panel_data){
 
-    nominal_eff = tibble(
-        m = 0.20,
-        p = 0.17,
-        t = 0.12
-    )
+  # nominal efficiency based on solar panel type
+  nominal_eff = tibble(
+      m = 0.20,
+      p = 0.17,
+      t = 0.12
+  )
 
-    indices = panel_data %>% group_by(panel_id, panel_type) %>% reframe(
-        mu = mean(eff),
-        sigma_t = sd(eff),
-    ) %>% reframe(
-        panel_id = panel_id,
-        ppk = case_when(
-            panel_type == "M" ~ ppk(mu, sigma_t, nominal_eff$m),
-            panel_type == "P" ~ ppk(mu, sigma_t, nominal_eff$p),
-            panel_type == "T" ~ ppk(mu, sigma_t, nominal_eff$t)
-        )
-    )
+  indices = panel_data %>% group_by(panel_id, panel_type) %>% reframe(
+      mu = mean(eff),
+      sigma_t = sd(eff),
+  ) %>% reframe(
+      panel_id = panel_id,
+      ppk = case_when(
+          panel_type == "M" ~ ppk(mu, sigma_t, nominal_eff$m),
+          panel_type == "P" ~ ppk(mu, sigma_t, nominal_eff$p),
+          panel_type == "T" ~ ppk(mu, sigma_t, nominal_eff$t)
+      )
+  )
 
-    return(indices)
+  return(indices)
+
+}
+
+
+
+# %%
+getPpks_farm = function(panel_data, power_spec){
+
+  indices = panel_data %>% group_by(site_id) %>% reframe(
+      mu = mean(power_output),
+      sigma_t = sd(power_output),
+  ) %>% reframe(
+      site_id = site_id,
+      ppk = ppk(mu, sigma_t, power_spec)
+      )
+
+  return(indices)
 
 }
 
@@ -61,5 +79,5 @@ library(readr)
 library(tidyverse)
 
 panel_data = read_csv("louise.csv")
-
-indices = getPpks(panel_data)
+indices_p = getPpks_panel(panel_data)
+indices_f = getPpks_farm(panel_data, 0.4)
