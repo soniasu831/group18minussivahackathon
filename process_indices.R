@@ -1,10 +1,28 @@
 # %%
 
-#' Process Performance Index (for skewed, uncentered data)
-#' @input mu, process mean
-#' @input sigma_t, process standard deviation
-#' @input lower, lower specification limit
-#' @input upper, upper specification limit
+#' @name Process Performance Index (for skewed, uncentered data)
+#' 
+#' @description
+#' Calculates the process performance index given a process mean, standard deviation, 
+#' and specification limits.
+#' 
+#' @param mu Numeric. Process mean.
+#' @param sigma_t Numeric. Process standard deviation.
+#' @param lower Numeric of NULL. Lower specification limit.
+#' @param upper Numeric or NULL. Upper specification limit.
+#' 
+#' @return Numeric. The calculated Ppk value.
+#' 
+#' @details
+#' - Ppk is used to evaluate process performance relative to specification limits
+#' 
+#' @export
+#' 
+#' @examples
+#' ppk(0.18, 0.02, lower = 0.17, upper = 0.20)
+#' ppk(0.18, 0.02, upper = 0.20)
+#' ppk(0.18, 0.02, lower = 0.17)
+
 ppk = function(mu, sigma_t, lower = NULL, upper = NULL){
   if(!is.null(lower)){
     a = abs(mu - lower) / (3 * sigma_t)
