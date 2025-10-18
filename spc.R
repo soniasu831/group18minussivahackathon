@@ -1,8 +1,9 @@
 
 # %%
 
-#' Create an average SPC chart for the max power output for each day
+#' @name Create an average SPC chart for the max power output for each day
 #' 
+#' @description
 #' This function calculates daily peak values for a specified variable (e.g. power output)
 #' across one or more panels, computes the daily mean, and control limits, 
 #' and produces an averages chart using ggplot2.
