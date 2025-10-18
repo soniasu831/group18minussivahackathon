@@ -131,15 +131,15 @@ add_efficiency <- function(panel_csv) {
   ) %>% left_join(irr_data, by = c("lat", "lon", "DateTime"))
 
 
-  # kW / (Wm^2 * cm^2 * 0.0001)
+  # kW * 1000 / (Wm^2 * cm^2 * 0.0001)
   panel_data = panel_data %>% mutate(
-    eff = power_output / (irr * panel_area * 0.0001)
+    eff = (power_output * 1000) / (irr * panel_area * 0.0001)
   )
   return(panel_data)
 }
 
 
 # %%
-panel_data = add_efficiency("adjusted_dates.csv")
+panel_data = add_efficiency("fixed_power.csv")
 
-write.csv(panel_data,"with_eff.csv", row.names = FALSE)
+write.csv(panel_data,"fixed_power_with_eff.csv", row.names = FALSE)
