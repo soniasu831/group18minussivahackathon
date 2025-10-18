@@ -33,6 +33,7 @@ Imports:
   lubridate (>= 1.9.4)
 
 ## Tool Description 
+This six sigma hackathon project tool was built for the operations team at NYSERDA. This project integrates solar panel performance monitoring with advanced statistical process control(SPC) and failure analysis to optimize solar farm operations.
 ### Import and Environmental Data Integration
 #### Variables:
 1. panel_id
