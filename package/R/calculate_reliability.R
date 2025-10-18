@@ -5,6 +5,7 @@
 #' @description Convert Excel serial dates to R Date format
 #' @param date Numeric. Date in Excel serial format.
 #' @return A date object in YYYY-MM-DD format
+#' @export
 
 convert_excel_date <- function(excel_date){
   as.Date(excel_date, origin = "1899-12-30")
