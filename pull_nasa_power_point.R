@@ -10,12 +10,20 @@
 #' @param end_date Character. End date in "YYYYMMDD" format.
 #'
 #' @return A data frame with DateTime (UTC), Irradiance (W/m²), Temperature (°C), and Clearness Index.
+#' 
+#' @details
+#' This function uses the NASA POWER API's "temporal/hourly/point" endpoint.
+#' The API returns hourly data in UTC. If the API request fails the function stops and prints HTTP code.
+#' 
 #' @import httr
 #' @import dplyr
-#' 
+#' @export
 #'
 #' @examples
-#' pull_nasa_power_point(42.44, -76.50, "20230101", "20230102")
+#' \dontrun{
+#' df <- pull_nasa_power_point(42.44, -76.50, "20230101", "20230102")
+#' head(df)
+#' }
 
 pull_nasa_power_point <- function(lat, lon, start_date, end_date) {
   library(httr)
@@ -136,7 +144,11 @@ add_efficiency <- function(panel_csv) {
     eff = (power_output * 1000) / (irr * panel_area * 0.0001)
   )
 
+  # set minimum irradiance for calculating efficiency
   panel_data$eff = ifelse(panel_data$irradiance > 150, panel_data$eff, 0)
+
+  # cap efficiency at 1
+  panel_data$eff = ifelse(panel_data$eff > 1, 1, panel_data$eff)
 
   panel_data = panel_data %>% 
   select(-Date)

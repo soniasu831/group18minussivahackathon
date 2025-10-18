@@ -2,9 +2,32 @@
 # %%
 
 #' Create an average SPC chart for the max power output for each day
-
+#' 
+#' This function calculates daily peak values for a specified variable (e.g. power output)
+#' across one or more panels, computes the daily mean, and control limits, 
+#' and produces an averages chart using ggplot2.
+#' 
+#' @param panel_id Character. Solar panel ID corresponding to measurements.
+#' @param variable Numeric. Variable to be analyzed.
+#' @param date Date or POSIXct. Corresponding to each measurement.
+#' 
+#' @return A ggplot2 of the average SPC chart.
+#' 
+#' @details
+#' - Daily peaks are calculated for each panel, then averaged across panels.
+#' - Control limits are calculated as the grand mean ± 3 standard erros.
+#' - Ribbon highlights the control limits, and daily means are shown as points and lines.
+#' 
 #' @import ggplot2
 #' @import dplyr
+#' @impotFrom lubridate as_date
+#' @export
+#' 
+#' @examples
+#' \dontrun{
+#' g1 <- spc_all(panel_id, variable, date)
+#' print(g1)
+#' }
 
 # function w
 
