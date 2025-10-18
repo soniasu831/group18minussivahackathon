@@ -94,6 +94,9 @@ spc_moving_range = function(date, variable){
     theme_classic()
     
     g1
+  
+  spc_test_results = spcTest(istat_s$mr, istat_s$se[1])
+  print(spc_test_results)
 
   return(g1)
 

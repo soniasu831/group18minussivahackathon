@@ -115,9 +115,12 @@ spc_all = function(panel_id, variable, date){
 
 g1
 
+spc_test_results = spcTest(stat_s$xbar, se)
+print(spc_test_results)
 
+return(g1)
+  
 }
-
 
 # %%
 library(readr)
@@ -139,10 +142,10 @@ g1 = spc_all(panel_id, variable, date)
 
 g1
 
-
 # %%
 ggplot() + 
   geom_line(data = panel_data, mapping=aes(x = DateTime, y = eff))+
   geom_line(data = panel_data, mapping=aes(x = DateTime, y = power_output), color = "red")+
   geom_line(data = panel_data, mapping=aes(x = DateTime, y = irradiance/1000), color = "blue")
 
+  

@@ -35,6 +35,7 @@ spcTest = function(averages, sigma){
   
 # initialize output
   output = tibble(
+    test1 = NA,
     test2 = NA,
     test3 = NA,
     test4 = NA,
