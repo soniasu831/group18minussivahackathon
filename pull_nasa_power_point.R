@@ -3,7 +3,7 @@
 #'
 #' @description
 #' This function queries the NASA POWER API to retrieve hourly solar irradiance,
-#' temperature, and clearness index for a given latitude, longitude, and date range.
+#'  temperature, and clearness index for a given latitude, longitude, and date range.
 #'
 #' @param lat Numeric. Latitude of the site.
 #' @param lon Numeric. Longitude of the site.
@@ -13,8 +13,8 @@
 #' @return A data frame with DateTime (UTC), Irradiance (W/m²), Temperature (°C), and Clearness Index.
 #' 
 #' @details
-#' This function uses the NASA POWER API's "temporal/hourly/point" endpoint.
-#' The API returns hourly data in UTC. If the API request fails the function stops and prints HTTP code.
+#' - This function uses the NASA POWER API's "temporal/hourly/point" endpoint.
+#' - The API returns hourly data in UTC. If the API request fails the function stops and prints HTTP code.
 #' 
 #' @import httr
 #' @import dplyr
