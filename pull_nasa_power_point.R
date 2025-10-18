@@ -1,6 +1,7 @@
 # %%
-#' Pull NASA POWER Hourly Irradiance for One Location
+#' @name Pull NASA POWER Hourly Irradiance for One Location
 #'
+#' @description
 #' This function queries the NASA POWER API to retrieve hourly solar irradiance,
 #' temperature, and clearness index for a given latitude, longitude, and date range.
 #'
