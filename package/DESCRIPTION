@@ -1,0 +1,26 @@
+Package: monitorsolarpanels
+Version: 1.0
+Date: 2025-10-18
+Title: Package for 2025 Six Sigma Hackathon for Prompt 2
+Authors@R: c(
+  person("Smith", "Louise", email = "lis36@cornell.edu", role = "aut"),
+  person("Su", "Sonia", email = "ss2773@cornell.edu", role = "aut"),
+  person("Veerabahu Pillai", "Karishni", email = "kp377@cornell.edu", role = "aut"),
+  person("Kumari", "Raveena", email = "rk824@cornell.edu", role = "aut") )
+Author: Louise Smith [aut],
+  Sonia Su [aut],
+  Karishni Veerabahu Pillai [aut],
+  Raveena Kumari [aut]
+Maintainer: Louis Smith <lis36@cornell.edu>
+Description: Package for assessing remaining lifespan of utility-scale solar farms.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Rxoygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Depends: R (>= 3.5.0)
+Imports:
+  dplyr (>= 1.1.4),
+  httr (>= 1.4.7),
+  ggplot2 (>= 4.0.0),
+  readr (>= 2.1.5),
+  lubridate (>= 1.9.4)
