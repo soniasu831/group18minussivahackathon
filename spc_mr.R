@@ -1,6 +1,7 @@
 # %%
-#' Create moving range SPC chart for a variable of interest
+#' @name Create moving range SPC chart for a variable of interest
 #' 
+#' @description
 #' This function calculates the moving range (absolute difference between consecutive daily
 #' peak values) for a variable of interest and produces a moving range chart using ggplot2.
 #' 
