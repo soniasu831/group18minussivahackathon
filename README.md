@@ -103,3 +103,32 @@ Evaluates whether a data vector passes eight standard SPC tests designed to dete
 Furthermore, standard SPC tests analyze these data to detect anomalies by checking for different types of patterns such as runs below or above control limits, trends, or oscillations. Each test targets specific behavior in the data that may indicate process shifts or irregularities. These SPC analyses start at the farm level and can be drilled down to individual solar panels, allowing targeted troubleshooting of anomalous sites.
 
 This comprehensive approach empowers data-driven decision-making to maintain optimal solar farm performance, improve reliability, and reduce failures through robust monitoring and statistical quality control.
+
+**Solar panel failure **
+Function used: Flag Failure (lambda)
+Inputs: Date, threshold, efficiency, installation date, site id
+Parameters: Location (determined by site id), and the distribution
+
+**Function used: Time to failure per panel 	**
+Inputs: panel id, site, start dates (describing when the panel started generating the energy), fail dates, 
+Parameters: Location (determined by site id), and the distribution
+
+**Function used: Lambda per site**
+Inputs: Date, threshold, efficiency, installation date, site id
+Parameters: Mean, location (determined by site id), and the distribution
+
+Process Indices – Performance Index
+Function used: PPK relative to specification limits
+Inputs: mu (mean (efficiency), sigma sd(efficiency), LCL, UCL,
+
+Function used: PPK for each solar panel
+Inputs: panel data, power specs, mu (mean (efficiency), sigma sd(efficiency), LSL, USL,
+Parameters: USL, LSL, Mean & Sd
+
+**Function used: SPC** 
+Inputs: panel id, variable, date
+Parameters: Daily peaks, sigma short, moving range statistics, lines for average chart
+Function used: ggplot 
+Inputs: time, mr (peak value), mrbar, d2, sigma_s, standard error, upper and lower mrbar
+Parameters: Daily peaks, sigma short, moving range statistics, lines for average chart,
+
