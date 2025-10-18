@@ -164,13 +164,13 @@ Lambda (λ) per site represents the failure rate, indicating the frequency of so
 
 ### Process Indices – Performance Index Function
 
-#### 1. Ppk relative to specification limits - Function
+### 1. Ppk relative to specification limits - Function
 Inputs: mu (mean (efficiency), sigma sd(efficiency), LCL, UCL
 
 #### Description: 
 Ppk (Process Performance Index) measures how well a process performs relative to its specification limits by considering both centering (mean) and overall variability (standard deviation) in real operation. The x ˉ is the sample mean, s is the sample standard deviation, and USL and LSL are upper and lower specification limits, respectively. It reflects the actual performance, including any shifts or drifts
 
-#### 2. PPK for each solar panel - Function
+### 2. PPK for each solar panel - Function
 Inputs: panel data, power specs, mu (mean (efficiency), sigma sd(efficiency), LSL, USL
 Parameters: USL, LSL, Mean & Sd
 
