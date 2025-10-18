@@ -1,3 +1,37 @@
+#' @name Solar panel failures and site Lambda
+#' 
+#' @description
+#' This function flags solar panel efficiency failures based on a threshold of 
+#' the panel's maximum efficiency, calculates time to failure per panel, and 
+#' computes the failure rate per site.
+#' 
+#' @param df Data frame. Must include columns for efficiency, site ID, installation date, and measurement date.
+#' @param threshold Numeric. Fraction of maximum efficiency below which a panel is considered to have
+#' failed (default = 0.7)
+#' @param date_col Character. Measurement dates.
+#' @param eff_col Numeric. Efficiency values.
+#' @param install_col Date or POSIXct. Date of installation.
+#' @param site_col Character. Site IDs.
+#' 
+#' @return a list containing
+#' 
+#' @import dplyr
+#' @export
+#' 
+#' @examples
+#' \dontrun{
+#' solar_df <- read_csv("louise.csv") %>%
+#'   mutate(
+#'     Date = as.Date(date, origin = "1899-12-30"),
+#'     installation_date = as.Date(installation_date, origin = "1899-12-30")
+#'   )
+#' 
+#' # Run failure flagging and lambda calculation
+#' result <- flag_failures_lambda(solar_df, threshold = 0.75)
+#' result$panel_lifespans
+#' result$site_lambda
+#' }
+
 # =========================================
 # Load required packages
 library(dplyr)
@@ -5,7 +39,10 @@ library(lubridate)
 library(readr)
 
 # =========================================
-# Convert Excel serial dates to R Date
+#' @name Convert Excel serial dates to R Date
+#' @param date Numeric. Date in Excel serial format.
+#' @description outputs date in YYYY-MM-DD
+
 convert_excel_date <- function(excel_date){
   as.Date(excel_date, origin = "1899-12-30")
 }
