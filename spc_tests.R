@@ -1,8 +1,36 @@
-#' @name spcTest
-#' @param averages a vector of subgroup average values
-#' @param sigma the standard deviation of the averages
-#' @description output whether or not the average data inputted passes 
-#' each test, TRUE = pass, FALSE = fail
+#' @name Run SPC Tests on Subgroup 
+#' 
+#' @description
+#' This function evaluates whether a vector passes each of the standard SPC tests.
+#' Each test checks for different types of patterns such as runs below/above control 
+#' limits, trends, or oscillations.
+#' 
+#' @param averages Numeric. Subgroup average values.
+#' @param sigma Numeric. Standard deviation of the subgroup averages.
+#' 
+#' @return A tibble with colums for each test. Each entry is 'TRUE' if the subgroup
+#' averages pass the test and 'FALSE' if they fail.
+#' 
+#' @details
+#' - Test 1: one point beyond zone a
+#' - Test 2: two out of three points in a row beyond zone b
+#' - Test 3: four out of five points in a row beyond zone c
+#' - Test 4: eight points in a row on the same side of the centerline
+#' - Test 5: six points in a rox steadily increasing or decreasing
+#' - Test 6: fifteen points in a row in zone c
+#' - Test 7: eight points in a rox on both sides of the centerline (none in zone c)
+#' - Test 8: fourteen points in a row alternating up and down
+#' 
+#' @import dplyr
+#' @export
+#' 
+#' @examples
+#' \dontrun{
+#' averages <- c(10.1, 10.2, 9.9, 10.3, 10.0)
+#' sigma <- sd(averages)
+#' spcTest(averages, sigma)
+#' }
+
 spcTest = function(averages, sigma){
   
 # initialize output
@@ -36,9 +64,27 @@ spcTest = function(averages, sigma){
     return(output)
   }
 
-  # test 2 #################
-
+  # test 1 #################
+  
   xbbar = mean(averages)
+
+  greater_than_3s = averages > (xbbar + sigma*3)
+  less_than_3s = averages < (xbbar - sigma*3)
+
+  # count the number of times there is 1 value greater than 3s or less than
+  # 3s from the centerline
+  test1 = sum(window(greater_than_3s, 1) >= 1) + sum(window(less_than_3s, 1) >= 1)
+
+  # update output vector
+  if(!is.na(test1)){
+    if (sum(test1) == 0){
+      output$test1 = TRUE
+      } else if (sum(test1) >=1){
+      output$test1 = FALSE
+      }
+    }
+  
+  # test 2 #################
 
   greater_than_2s = averages > (xbbar + sigma*2)
   less_than_2s = averages < (xbbar - sigma*2)
