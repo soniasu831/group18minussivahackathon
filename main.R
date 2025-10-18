@@ -10,7 +10,7 @@ library(ggplot2)
 library(readr)
 
 # load in our package
-install.packages("monitorsolarpanels_1.0.tar.gz", type = "source")
+install.packages("monitorsolarpanels_1.0.1.tar.gz", type = "source")
 library(monitorsolarpanels)
 
 ## ESTIMATE SOLAR PANEL EFFICIENCY
@@ -35,35 +35,31 @@ indices_panel = getPpks_panel(panel_data)
 # cause and special cause variation
 
 
+# MOVING RANGE CHARTS PER SOLAR PANEL
 # for testing purposes, look at the first solar panel
-
 # pull date data from panel_data tibble
-date = panel_data$DateTime[1:(30*24)]
-# pull power output data
-power = panel_data$power_output[1:(30*24)]
-mr_power = spc_moving_range(date, power)
+panel_id = panel_data$panel_id[1]
+mr_power = spc_moving_range(panel_data, panel_id, "p")
 mr_power
+# all SPC tests passed, no indication of special cause
 
 # we can also look at efficiency
-eff = panel_data$eff[1:(30*24)]
-mr_eff = spc_moving_range(date, eff)
+mr_eff = spc_moving_range(panel_data, panel_id, "e")
 mr_eff
 # SPC test 4 fails, which indicates there may be a sustained shift
 
-# we can also look at average spc charts for the whole farm
 
+# AVERAGE CHARTS PER SOLAR FARM
 # for testing purposes, look at the first site
-sites = panel_data$site_id %>% unique()
-indices = sites %>% match(panel_data$site_id)
+site_id = panel_data$site_id[1]
 
-date = panel_data$DateTime[1:(indices[2]-1)]
-variable = panel_data$power_output[1:(indices[2]-1)]
-panel_id = panel_data$panel_id[1:(indices[2]-1)]
+spc_avg_p = spc_all(panel_data, site_id, "p")
+spc_avg_p
+# tests 1, 2 and 7 fail
 
-spc_avg = spc_all(panel_id, variable, date)
-spc_avg
-# here, test 6 fails, which indicates there may be special cause due
-# to a faulty gauge 
+spc_avg_e = spc_all(panel_data, site_id, "e")
+spc_avg_e
+# tests 1,2, and 4 fail
 
 
 ## CALCULATE RELIABILITY
