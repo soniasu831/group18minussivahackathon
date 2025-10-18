@@ -34,6 +34,32 @@ Imports:
 
 ## Tool Description 
 This six sigma hackathon project tool was built for the operations team at NYSERDA. This project integrates solar panel performance monitoring with advanced statistical process control(SPC) and failure analysis to optimize solar farm operations.
+
+**## How Users Interact with the Data**
+They query predictions on failure and forecast expected replacement counts, as per the process indices and the threshold exceedances. The interaction will be via R package.
+
+**What Users Get Back**
+
+The users receive actionable outputs such as:
+1. CSV files with detailed failure probabilities by panels or sites.
+2. Data frames in analytical environments for further custom analysis.
+3. Plots and visualizations showing failure trends, predicted risk levels, and thresholds, enabling quick interpretation of system health.
+
+**Stakeholder-Oriented Documentation**
+
+To communicate effectively with stakeholders (e.g., Operations managers):
+Explain the purpose: The tool predicts panels that are likely to fail soon, providing estimates on how many need replacement to avoid downtime.
+Highlight the key outputs: Clear CSV reports list panels flagged for replacement
+Describe user interaction: Operations staff upload or connect data feeds, then receive intuitive tables, charts, and alerts.
+Recommend actions: Do use the predictive outputs for proactive maintenance scheduling; do not rely solely on manual inspections post-failure.
+Emphasize benefits: Reduced unplanned outages, optimized maintenance cost and resource allocation, and maximized solar energy production.
+
+**Direct Recommendation**
+
+Do use the generated CSV and visualization reports for prioritizing replacement.
+Do not delay interventions once thresholds for failure risk are reached.
+
+
 ### Import and Environmental Data Integration
 #### Variables:
 1. Unique identifier for solar panel (panel_id)
