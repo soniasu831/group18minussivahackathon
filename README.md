@@ -36,19 +36,19 @@ Imports:
 This six sigma hackathon project tool was built for the operations team at NYSERDA. This project integrates solar panel performance monitoring with advanced statistical process control(SPC) and failure analysis to optimize solar farm operations.
 ### Import and Environmental Data Integration
 #### Variables:
-1. Solar panel identifiers (panel_id)
-2. Power output values (power_output)
-3. Measurement dates (date)
+1. Unique identifier for solar panel (panel_id)
+2. Solar panel power output (power_output)
+3. Date of measurement (date)
 4. Measurement time (time)
-5. Latitude (latitude)
-6. Longitude (longitude)
-7. Site identifier (site_id)
+5. Latitude of solar farm (latitude)
+6. Longitude of solar farm (longitude)
+7. Unique identifier for Site (site_id)
 8. Date of installation (installation_date)
-9. Manufacturer name (manufacturer)
-10. Batch model (batch_model)
-11. Panel model (model)
+9. Manufacturer of solar panel (manufacturer)
+10. Batch model for solar panel (batch_model)
+11. Modal number for solar panel (model)
 12. panel type (panel_type)
-13. Panel area (panel_area)
+13. Surface area of solar panel (panel_area)
 #### Description:
 This function imports user-provided solar panel data and enriches it by querying the NASA POWER API to obtain environmental variables such as irradiance, temperature, and clearness index. This combined dataset forms the basis for further performance and failure analyses under real-world conditions.
 
@@ -65,17 +65,17 @@ Calculates solar panel efficiency from the combined data, identifies when effici
 2. Process standard deviation (sigma_t)
 3. Specification limits (nominal efficiency thresholds per panel type and user-defined power specs per site)
 4. Panel efficiency (eff)
-5. Power output (power_output)
+5. Solar panel power output (power_output)
 6. Panel type (panel_type)
-7. Site identifier (site_id)
+7. Unique identifier for site (site_id)
 #### Description:
 Computes the Process Performance Index (Ppk) to evaluate process stability and alignment with specification limits. For individual panels, Ppk is calculated based on nominal efficiencies specific to the panel type (M, P, or T). For solar farms, Ppk uses a specified power output limit. This index quantifies how consistently both panels and farms operate within desired performance boundaries, offering actionable insights for quality control and maintenance prioritization.
 
 ### Average Control Chart Creation (SPC)
 #### Variables:
-1. Solar panel identifiers (panel_id)
-2. Measurement dates (date or DateTime)
-3. Power output values (power_output)
+1. Unique identifier for solar panel (panel_id)
+2. combined date and time of measurement for NASA API (date or DateTime)
+3. Solar panel ower output (power_output)
 4. Daily peak values
 5. Daily means (xbar)
 6. Pooled standard deviation (sigma_s)
