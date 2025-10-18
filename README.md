@@ -132,11 +132,16 @@ This comprehensive approach empowers data-driven decision-making to maintain opt
 
 **Inputs and Parameters of the functions used**
 
-**Solar panel failure **
-Function used: Flag Failure (lambda)
+### Solar panel failure 
+
+Flag Failure (lambda) Function 
+
 Inputs: Date, threshold, efficiency, installation date, site id
 Parameters: Location (determined by site id), and the distribution
-**Description:** The function begins with loading and processing solar panel sensor data into a data frame and then computing efficiency as a new column, followed by grouping panel ID data and summarizing the maximum efficiency. We then finalize by calculating the mean efficiency and applying the failure model to predict failure predictability and output results as a plot.
+
+#### Description:
+
+The function begins with loading and processing solar panel sensor data into a data frame and then computing efficiency as a new column, followed by grouping panel ID data and summarizing the maximum efficiency. We then finalize by calculating the mean efficiency and applying the failure model to predict failure predictability and output results as a plot.
 
 ### Time to failure per panel - Function 
 
@@ -159,13 +164,13 @@ Lambda (λ) per site represents the failure rate, indicating the frequency of so
 
 ### Process Indices – Performance Index Function
 
-#### Ppk relative to specification limits - Function
+#### 1. Ppk relative to specification limits - Function
 Inputs: mu (mean (efficiency), sigma sd(efficiency), LCL, UCL
 
 #### Description: 
 Ppk (Process Performance Index) measures how well a process performs relative to its specification limits by considering both centering (mean) and overall variability (standard deviation) in real operation. The x ˉ is the sample mean, s is the sample standard deviation, and USL and LSL are upper and lower specification limits, respectively. It reflects the actual performance, including any shifts or drifts
 
-### PPK for each solar panel - Function
+#### 2. PPK for each solar panel - Function
 Inputs: panel data, power specs, mu (mean (efficiency), sigma sd(efficiency), LSL, USL
 Parameters: USL, LSL, Mean & Sd
 
