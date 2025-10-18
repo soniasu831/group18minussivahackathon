@@ -2,12 +2,12 @@
 #' 
 #' @description
 #' This function flags solar panel efficiency failures based on a threshold of 
-#' the panel's maximum efficiency, calculates time to failure per panel, and 
-#' computes the failure rate per site.
+#'  the panel's maximum efficiency, calculates time to failure per panel, and 
+#'  computes the failure rate per site.
 #' 
 #' @param df Data frame. Must include columns for efficiency, site ID, installation date, and measurement date.
-#' @param threshold Numeric. Fraction of maximum efficiency below which a panel is considered to have
-#' failed (default = 0.7)
+#' @param threshold Numeric. Fraction of maximum efficiency below which a panel is considered to have 
+#'  failed (default = 0.7)
 #' @param date_col Character. Measurement dates.
 #' @param eff_col Numeric. Efficiency values.
 #' @param install_col Date or POSIXct. Date of installation.
@@ -53,7 +53,7 @@ convert_excel_date <- function(excel_date){
 # Flag failures and calculate lambda per site
 flag_failures_lambda <- function(df, threshold = 0.7, date_col = "Date", eff_col = "eff", install_col = "installation_date", site_col = "site_id") {
   
-  # 1️⃣ Flag failures per panel
+  # Flag failures per panel
   df_flagged <- df %>%
     group_by(panel_id) %>%
     mutate(
@@ -67,7 +67,7 @@ flag_failures_lambda <- function(df, threshold = 0.7, date_col = "Date", eff_col
     ) %>%
     ungroup()
   
-  # 2️⃣ Calculate time to failure per panel directly
+  # Calculate time to failure per panel directly
   panel_lifespans <- df_flagged %>%
     group_by(panel_id, .data[[site_col]]) %>%
     summarize(
@@ -84,7 +84,7 @@ flag_failures_lambda <- function(df, threshold = 0.7, date_col = "Date", eff_col
       .groups = "drop"
     )
   
-  # 3️⃣ Calculate lambda per site
+  # Calculate lambda per site
   site_lambda <- panel_lifespans %>%
     group_by(.data[[site_col]]) %>%
     summarize(
@@ -92,11 +92,11 @@ flag_failures_lambda <- function(df, threshold = 0.7, date_col = "Date", eff_col
       .groups = "drop"
     )
   
-  # 4️⃣ Merge site lambda back into panel summary
+  # Merge site lambda back into panel summary
   panel_lifespans <- panel_lifespans %>%
     left_join(site_lambda, by = site_col)
   
-  # 5️⃣ Return results
+  # Return results
   return(list(
     flagged_data = df_flagged,
     panel_lifespans = panel_lifespans,
