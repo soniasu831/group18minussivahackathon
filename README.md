@@ -53,8 +53,7 @@ To communicate effectively with stakeholders (e.g., Operations managers):
 
 **Direct Recommendation**
 
-Do use the generated CSV and visualization reports for prioritizing replacement.
-Do not delay interventions once thresholds for failure risk are reached.
+Use the generated CSV and visualization reports for prioritizing replacement and act promptly on interventions once thresholds for failure risk are reached.
 
 
 ### Import and Environmental Data Integration
