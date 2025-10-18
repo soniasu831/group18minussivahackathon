@@ -19,6 +19,7 @@
 #' @import ggplot2
 #' @import dplyr
 #' @importFrom lubridate as_date
+#' @export
 #' 
 #' @examples
 #' \dontrun{
