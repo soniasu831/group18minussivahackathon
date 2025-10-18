@@ -135,11 +135,20 @@ add_efficiency <- function(panel_csv) {
   panel_data = panel_data %>% mutate(
     eff = (power_output * 1000) / (irr * panel_area * 0.0001)
   )
+
+  panel_data$eff = ifelse(panel_data$irradiance > 150, panel_data$eff, 0)
+
+  panel_data = panel_data %>% 
+  select(-Date)
+
+
   return(panel_data)
 }
 
 
 # %%
-panel_data = add_efficiency("fixed_power.csv")
+panel_data = add_efficiency("test_again_with_jitter.csv")
 
-write.csv(panel_data,"fixed_power_with_eff.csv", row.names = FALSE)
+write.csv(panel_data,"louise.csv", row.names = FALSE)
+
+
