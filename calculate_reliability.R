@@ -41,9 +41,10 @@ library(lubridate)
 library(readr)
 
 # =========================================
-#' @name Convert Excel serial dates to R Date
+#' @name Excel date conversion helper
+#' @description Convert Excel serial dates to R Date format
 #' @param date Numeric. Date in Excel serial format.
-#' @description outputs date in YYYY-MM-DD
+#' @return A date object in YYYY-MM-DD format
 
 convert_excel_date <- function(excel_date){
   as.Date(excel_date, origin = "1899-12-30")
