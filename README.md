@@ -48,11 +48,11 @@ The users receive actionable outputs such as:
 **Stakeholder-Oriented Documentation**
 
 To communicate effectively with stakeholders (e.g., Operations managers):
-Explain the purpose: The tool predicts panels that are likely to fail soon, providing estimates on how many need replacement to avoid downtime.
-Highlight the key outputs: Clear CSV reports list panels flagged for replacement
-Describe user interaction: Operations staff upload or connect data feeds, then receive intuitive tables, charts, and alerts.
-Recommend actions: Do use the predictive outputs for proactive maintenance scheduling; do not rely solely on manual inspections post-failure.
-Emphasize benefits: Reduced unplanned outages, optimized maintenance cost and resource allocation, and maximized solar energy production.
+1. Explain the purpose: The tool predicts panels that are likely to fail soon, providing estimates on how many need replacement to avoid downtime.
+2. Highlight the key outputs: Clear CSV reports list panels flagged for replacement
+3. Describe user interaction: Operations staff upload or connect data feeds, then receive intuitive tables, charts, and alerts.
+4. Recommend actions: Do use the predictive outputs for proactive maintenance scheduling; do not rely solely on manual inspections post-failure.
+5. Emphasize benefits: Reduced unplanned outages, optimized maintenance cost and resource allocation, and maximized solar energy production.
 
 **Direct Recommendation**
 
