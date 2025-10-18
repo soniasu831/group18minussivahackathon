@@ -146,6 +146,12 @@ add_efficiency <- function(panel_csv) {
 
   panel_data$eff = ifelse(panel_data$irradiance > 150, panel_data$eff, 0)
 
+  # set minimum irradiance for calculating efficiency
+  panel_data$eff = ifelse(panel_data$irradiance > 150, panel_data$eff, 0)
+
+  # cap efficiency at 1
+  panel_data$eff = ifelse(panel_data$eff > 1, 1, panel_data$eff)
+
   panel_data = panel_data %>% 
   select(-Date)
 
