@@ -16,6 +16,8 @@
 #' @return a list containing
 #' 
 #' @import dplyr
+#' @import readr
+#' @import lubridate
 #' @export
 #' 
 #' @examples
