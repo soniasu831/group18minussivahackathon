@@ -74,7 +74,10 @@ Use the generated CSV and visualization reports for prioritizing replacement and
 #### Description:
 This function imports user-provided solar panel data and enriches it by querying the NASA POWER API to obtain environmental variables such as irradiance, temperature, and clearness index. This combined dataset forms the basis for further performance and failure analyses under real-world conditions.
 
-###
-See the [Tests Guide](docs/TestGuide.md) for details on the tests this package can run, with additional information on the necessary variable inputs.
-See the [Functions Guide](docs/FunctionDescriptions.md) for details on the inputs and parameters of the functions used.
+### Quick Links
+[Tests Guide](docs/TestGuide.md) for details on the tests this package can run, with additional information on the necessary variable inputs.
+[Functions Guide](docs/FunctionDescriptions.md) for details on the inputs and parameters of the functions used.
+[Test Data Set 1](louise_raw.csv)
+[Test Data Set 2](sonia3.csv)
+[Test Data Set 3](fixed_power.csv)
 
