@@ -4,7 +4,7 @@
 #' 
 #' @description
 #' Calculates the process performance index given a process mean, standard deviation, 
-#' and specification limits.
+#'  and specification limits.
 #' 
 #' @param mu Numeric. Process mean.
 #' @param sigma_t Numeric. Process standard deviation.
