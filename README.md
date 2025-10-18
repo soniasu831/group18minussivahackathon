@@ -17,7 +17,7 @@ Each row represents solar panel data collected from utility-scale solar farms.
 | `lat` | Lattitude of solar panel farm |
 | `lon` | Longitude of solar panel farm |
 | `site_id`  | Unique identifier for solar farm |
-| `installation date` | Date that the solar panel was installed (Excel serial format) |
+| `installation_date` | Date that the solar panel was installed (Excel serial format) |
 | `manufacturer` | Manufacturer of the solar panel |
 | `batch model ` | Batch model for solar panel |
 | `model` | Model number for solar panel |
@@ -36,19 +36,19 @@ Imports:
 This six sigma hackathon project tool was built for the operations team at NYSERDA. This project integrates solar panel performance monitoring with advanced statistical process control(SPC) and failure analysis to optimize solar farm operations.
 ### Import and Environmental Data Integration
 #### Variables:
-1. panel_id
-2. power_output
-3. date
-4. time
-5. latitude
-6. longitude
-7. site_id
-8. installation_date
-9. manufacturer
-10. batch_model
-11. model
-12. panel_type
-13. panel_area
+1. Solar panel identifiers (panel_id)
+2. Power output values (power_output)
+3. Measurement dates (date)
+4. Measurement time (time)
+5. Latitude (latitude)
+6. Longitude (longitude)
+7. Site identifier (site_id)
+8. Date of installation (installation_date)
+9. Manufacturer name (manufacturer)
+10. Batch model (batch_model)
+11. Panel model (model)
+12. panel type (panel_type)
+13. Panel area (panel_area)
 #### Description:
 This function imports user-provided solar panel data and enriches it by querying the NASA POWER API to obtain environmental variables such as irradiance, temperature, and clearness index. This combined dataset forms the basis for further performance and failure analyses under real-world conditions.
 
