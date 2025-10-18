@@ -1,14 +1,35 @@
 # %%
 #' Create moving range SPC chart for a variable of interest
-#' @param date a vector containing the date of the measurement
-#' @param variable a vector containing the variable of interest
+#' 
+#' This function calculates the moving range (absolute difference between consecutive daily
+#' peak values) for a variable of interest and produces a moving range chart using ggplot2.
+#' 
+#' @param date Date or POSIXct. Date of the measurement.
+#' @param variable Numeric. Variable of interest to analyze.
+#' 
+#' @return A ggplot2 object of the moving range chart.
+#' 
+#' @details
+#' - The moving range is computed as the absolute difference between consecutive daily peaks.
+#' - The upper control limit is calculated as the mean moving range plus 3 standard errors.
+#' - The lower control limit is always set to 0 for moving range charts.
+#' Labels indicate the mean, upper control limit, and lower limit.
+#' 
 #' @import ggplot2
 #' @import dplyr
+#' @importFrom lubridate as_date
+#' 
+#' @examples
+#' \dontrun{
+#' g_mr <- spc_moving_range(date, variable)
+#' print(g_mr)
+#' }
 
 spc_moving_range = function(date, variable){
 
   library(ggplot2)
   library(dplyr)
+  library (lubridate)
 
   # format data into a tibble
   data = tibble(
