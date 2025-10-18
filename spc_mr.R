@@ -4,9 +4,10 @@
 #' @description
 #' This function calculates the moving range (absolute difference between consecutive daily
 #'  peak values) for a variable of interest and produces a moving range chart using ggplot2.
+#'  It also prints a tibble that assesses whether the data passes the eight SPC checks. 
 #' 
-#' @param date Date or POSIXct. Date of the measurement.
-#' @param variable Numeric. Variable of interest to analyze.
+#' @param date Date or POSIXct vector. Date corresponding to each measurement.
+#' @param variable Numeric vector. Vector containing the variable of interest to analyze.
 #' 
 #' @return A ggplot2 object of the moving range chart.
 #' 
