@@ -46,9 +46,26 @@ ppk = function(mu, sigma_t, lower = NULL, upper = NULL){
 
 
 # %%
-
-#' Function to evaluate Ppks for solar panel efficiency on a per-solar panel level 
+#' @name Get Process Performance Index for each Solar Panel
+#' 
+#' @description
+#' Calculates the process performance index for each solar panel based on the 
+#' nominal efficiency for each solar panel type (M, P, or T)
+#' 
+#' @param panel_data a tibble, as outputted from add_efficiency()
+#' 
+#' @return a tibble containing the calculated Ppk value for each solar panel
+#' 
+#' @details
+#' - Ppk is used to evaluate process performance relative to specification limits. 
+#' Here, the specification limit used is the nominal efficiency for each solar panel time
+#' 
 #' @import dplyr
+#' @export
+#' 
+#' @examples
+#' indices_p = getPpks_panel(panel_data)
+#' 
 getPpks_panel = function(panel_data){
 
   # nominal efficiency based on solar panel type
@@ -75,8 +92,32 @@ getPpks_panel = function(panel_data){
 }
 
 
+# %%
 
 # %%
+#' @name Get Process Performance Index for Solar Farm
+#' 
+#' @description
+#' Calculates the process performance index for each solar farm based on a
+#' specified power output specification
+#' 
+#' @param panel_data a tibble, as outputted from add_efficiency()
+#' @param power_spec numeric, the per solar panel power output specification 
+#' for the solar farm
+#' 
+#' @return a tibble containing the calculated Ppk value for each solar far based on
+#' a per solar panel power output specification
+#' 
+#' @details
+#' - Ppk is used to evaluate process performance relative to specification limits. 
+#' Here, the specification limit used is provided by the user as power_spec
+#' 
+#' @import dplyr
+#' @export
+#' 
+#' @examples
+#' indices_f = getPpks_farm(panel_data, 0.4)
+#' 
 getPpks_farm = function(panel_data, power_spec){
 
   indices = panel_data %>% group_by(site_id) %>% reframe(
