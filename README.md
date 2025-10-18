@@ -33,7 +33,7 @@ Imports:
   lubridate (>= 1.9.4)
 
 ## Tool Description 
-This six sigma hackathon project tool was built for the operations team at NYSERDA. This project integrates solar panel performance monitoring with advanced statistical process control(SPC) and failure analysis to optimize solar farm operations.The users interact with the failure rates via the R package.
+This six sigma hackathon project tool was built for the operations team at NYSERDA. This project integrates solar panel performance monitoring with advanced statistical process control(SPC) and failure analysis to optimize solar farm operations.The users interact with the failure rates via the R package. [Main.R](Main.R) is an example of how this package can be used to analyze solar panel farms.
 
 **What Users Get Back**
 
@@ -74,6 +74,7 @@ Use the generated CSV and visualization reports for prioritizing replacement and
 #### Description:
 This function imports user-provided solar panel data and enriches it by querying the NASA POWER API to obtain environmental variables such as irradiance, temperature, and clearness index. This combined dataset forms the basis for further performance and failure analyses under real-world conditions.
 
-See the [Function Guide](docs/FunctionDescriptions.md) for details.
-See the [Analysis Guide](docs/AnalysisDescriptions.md) for details.
+###
+See the [Tests Guide](docs/TestGuide.md) for details on the tests this package can run, with additional information on the necessary variable inputs.
+See the [Functions Guide](docs/FunctionDescriptions.md) for details on the inputs and parameters of the functions used.
 
