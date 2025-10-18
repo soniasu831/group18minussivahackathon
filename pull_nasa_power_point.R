@@ -75,16 +75,18 @@ pull_nasa_power_point <- function(lat, lon, start_date, end_date) {
 
 # %%
 
-#' Calculate efficiency based on solar irradience from NASA POWER API
-#'
+#' @name Add efficiency
+#' @description Calculate panel efficiency based on solar irradience from NASA POWER API
 #' @param panel_csv solar panel data as a .csv 
-#'
+#' @return a tibble with calculated efficiency for each panel entry
 #' @import readr
 #' @import dplyr
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' panel_data = add_efficiency("adjusted_dates.csv")
+#' }
 
 add_efficiency <- function(panel_csv) {
 
