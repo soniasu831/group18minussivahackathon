@@ -33,10 +33,7 @@ Imports:
   lubridate (>= 1.9.4)
 
 ## Tool Description 
-This six sigma hackathon project tool was built for the operations team at NYSERDA. This project integrates solar panel performance monitoring with advanced statistical process control(SPC) and failure analysis to optimize solar farm operations.
-
-**## How Users Interact with the Data**
-They query predictions on failure and forecast expected replacement counts, as per the process indices and the threshold exceedances. The interaction will be via R package.
+This six sigma hackathon project tool was built for the operations team at NYSERDA. This project integrates solar panel performance monitoring with advanced statistical process control(SPC) and failure analysis to optimize solar farm operations.The users interact with the failure rates via the R package.
 
 **What Users Get Back**
 
@@ -136,8 +133,10 @@ This comprehensive approach empowers data-driven decision-making to maintain opt
 
 Flag Failure (lambda) Function 
 
-Inputs: Date, threshold, efficiency, installation date, site id
-Parameters: Location (determined by site id), and the distribution
+# Inputs: 
+Date, threshold, efficiency, installation date, site id
+# Parameters: 
+Location (determined by site id), and the distribution
 
 #### Description:
 
@@ -145,8 +144,10 @@ The function begins with loading and processing solar panel sensor data into a d
 
 ### Time to failure per panel - Function 
 
-Inputs: panel id, site, start dates (describing when the panel started generating the energy), fail dates, 
-Parameters: Location (determined by site id), and the distribution
+# Inputs: 
+panel id, site, start dates (describing when the panel started generating the energy), fail dates, 
+# Parameters: 
+Location (determined by site id), and the distribution
 
 #### Description: 
 
@@ -154,9 +155,10 @@ The time to failure (TTF) per solar panel is calculated by subtracting the commi
 
 ### Lambda per site - Function
 
-#### Inputs: 
+# Inputs: 
 Date, threshold, efficiency, installation date, site id
-Parameters: Mean, location (determined by site id), and the distribution
+# Parameters: 
+Mean, location (determined by site id), and the distribution
 
 #### Description: 
 
