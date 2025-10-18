@@ -26,12 +26,12 @@
 #' 
 #' @examples
 #' \dontrun{
-#' g_mr <- spc_moving_range(panel_data, panel_id, variable)
+#' g_mr <- spc_moving_range(panel_data, panel_id, var)
 #' print(g_mr)
 #' }
 
 
-spc_moving_range = function(panel_data, panel_id, variable){
+spc_moving_range = function(panel_data, panel_id, var){
 
   # library(ggplot2)
   # library(dplyr)

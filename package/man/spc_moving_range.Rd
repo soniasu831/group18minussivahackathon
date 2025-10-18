@@ -4,7 +4,7 @@
 \alias{spc_moving_range}
 \title{Create moving range SPC chart for a variable of interest}
 \usage{
-spc_moving_range(panel_data, panel_id, variable)
+spc_moving_range(panel_data, panel_id, var)
 }
 \arguments{
 \item{panel_data}{a tibble, as outputted from add_efficiency()}
@@ -29,7 +29,7 @@ This function calculates the moving range (absolute difference between consecuti
 }
 \examples{
 \dontrun{
-g_mr <- spc_moving_range(panel_data, panel_id, variable)
+g_mr <- spc_moving_range(panel_data, panel_id, var)
 print(g_mr)
 }
 }
