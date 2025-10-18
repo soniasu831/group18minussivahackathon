@@ -9,7 +9,7 @@
 #'  and produces an averages chart using ggplot2.
 #' 
 #' @param panel_id Character. Solar panel ID corresponding to measurements.
-#' @param variable Numeric. Variable to be analyzed.
+#' @param variable Numeric vector. Vector containing variable to be analyzed.
 #' @param date Date or POSIXct. Corresponding to each measurement.
 #' 
 #' @return A ggplot2 of the average SPC chart.
@@ -29,8 +29,6 @@
 #' g1 <- spc_all(panel_id, variable, date)
 #' print(g1)
 #' }
-
-# function w
 
 spc_all = function(panel_id, variable, date){
 
@@ -141,11 +139,5 @@ panel_id = panel_data$panel_id[1:(indices[2]-1)]
 g1 = spc_all(panel_id, variable, date)
 
 g1
-
-# %%
-ggplot() + 
-  geom_line(data = panel_data, mapping=aes(x = DateTime, y = eff))+
-  geom_line(data = panel_data, mapping=aes(x = DateTime, y = power_output), color = "red")+
-  geom_line(data = panel_data, mapping=aes(x = DateTime, y = irradiance/1000), color = "blue")
 
   
