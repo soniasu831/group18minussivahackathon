@@ -132,9 +132,9 @@ This comprehensive approach empowers data-driven decision-making to maintain opt
 
 Flag Failure (lambda) Function 
 
-##### Inputs: 
+#### Inputs: 
 Date, threshold, efficiency, installation date, site id
-##### Parameters: 
+#### Parameters: 
 Location (determined by site id), and the distribution
 
 #### Description:
@@ -143,9 +143,9 @@ The function begins with loading and processing solar panel sensor data into a d
 
 ### Time to failure per panel - Function 
 
-##### Inputs: 
+#### Inputs: 
 panel id, site, start dates (describing when the panel started generating the energy), fail dates, 
-##### Parameters: 
+#### Parameters: 
 Location (determined by site id), and the distribution
 
 #### Description: 
@@ -154,9 +154,9 @@ The time to failure (TTF) per solar panel is calculated by subtracting the commi
 
 ### Lambda per site - Function
 
-##### Inputs: 
+#### Inputs: 
 Date, threshold, efficiency, installation date, site id
-##### Parameters: 
+#### Parameters: 
 Mean, location (determined by site id), and the distribution
 
 #### Description: 
