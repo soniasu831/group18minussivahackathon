@@ -104,6 +104,8 @@ Furthermore, standard SPC tests analyze these data to detect anomalies by checki
 
 This comprehensive approach empowers data-driven decision-making to maintain optimal solar farm performance, improve reliability, and reduce failures through robust monitoring and statistical quality control.
 
+**Inputs and Parameters of the functions used**
+
 **Solar panel failure **
 Function used: Flag Failure (lambda)
 Inputs: Date, threshold, efficiency, installation date, site id
@@ -122,7 +124,7 @@ Function used: PPK relative to specification limits
 Inputs: mu (mean (efficiency), sigma sd(efficiency), LCL, UCL,
 
 Function used: PPK for each solar panel
-Inputs: panel data, power specs, mu (mean (efficiency), sigma sd(efficiency), LSL, USL,
+Inputs: panel data, power specs, mu (mean (efficiency), sigma sd(efficiency), LSL, USL
 Parameters: USL, LSL, Mean & Sd
 
 **Function used: SPC** 
@@ -130,5 +132,5 @@ Inputs: panel id, variable, date
 Parameters: Daily peaks, sigma short, moving range statistics, lines for average chart
 Function used: ggplot 
 Inputs: time, mr (peak value), mrbar, d2, sigma_s, standard error, upper and lower mrbar
-Parameters: Daily peaks, sigma short, moving range statistics, lines for average chart,
+Parameters: Daily peaks, sigma short, moving range statistics, lines for average chart
 
